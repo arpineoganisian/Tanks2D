@@ -91,9 +91,8 @@ public class App extends Application {
                     gameSession.setResponse("NONE");
                 }
 
-                //TODO с изменением hp меняем размер life bars:
-//                playerLifeBar = new Image("life.png", gameSession.getPlayerTank().getHp()*2, 20, false, false);
-//                enemyLifeBar = new Image("life.png", gameSession.getEnemyTank().getHp() * 2, 20, false, false);
+                Image playerLifeBar = new Image("life.png", gameSession.getPlayerTank().getHp()*2, 20, false, false);
+                Image enemyLifeBar = new Image("life.png", gameSession.getEnemyTank().getHp()*2, 20, false, false);
 
                 // rendering
                 gc.clearRect(0, 0, Constants.arenaWidth, Constants.arenaHeight);
@@ -162,7 +161,7 @@ public class App extends Application {
         //getting instance of Class, that's responsible for communication with server
         GameSession gameSession = GameSession.getInstance();
         gameSession.setPort(port);
-        gameSession.setServer("localhost");
+        gameSession.setServer("10.21.22.116");
         gameSession.start();
 
         launch();

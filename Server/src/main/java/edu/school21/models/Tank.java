@@ -49,12 +49,14 @@ public class Tank {
     public void moveLeft() {
         if (position.x - Constants.tankSpeed >= 0) {
             position.x -= Constants.tankSpeed;
+            area.setRect(position.x, position.y, Constants.tankWidth, Constants.tankHeight);
         }
     }
 
     public void moveRight() {
         if (position.x <= Constants.arenaWidth - Constants.tankWidth) {
             position.x += Constants.tankSpeed;
+            area.setRect(position.x, position.y, Constants.tankWidth, Constants.tankHeight);
         }
     }
 

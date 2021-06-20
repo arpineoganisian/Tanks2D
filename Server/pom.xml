@@ -9,6 +9,7 @@
     <version>1.0</version>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
     </properties>
@@ -57,7 +58,7 @@
     </dependencies>
 
     <build>
-        <finalName>socket-server</finalName>
+        <finalName>server</finalName>
         <defaultGoal>clean install</defaultGoal>
         <plugins>
             <plugin>
@@ -71,7 +72,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>edu.school21.sockets.application.Main</mainClass>
+                            <mainClass>edu.school21.application.Main</mainClass>
                         </manifest>
                     </archive>
                     <appendAssemblyId>false</appendAssemblyId>
