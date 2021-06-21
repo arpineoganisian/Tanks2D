@@ -1,5 +1,5 @@
 # Tanks2D
-#### Multiplayer 2D game written on Java
+#### _Multiplayer 2D game written on Java_
 
 ### Technology: 
 - Threads    
