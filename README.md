@@ -7,4 +7,4 @@
 - JavaFX   
 - Maven
 
-![](https://github.com/buhankahleba/Tanks2D/blob/main/tanks.png)
+![](https://github.com/buhankahleba/Tanks2D/blob/main/tanks2d.png)
