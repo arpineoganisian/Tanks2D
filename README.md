@@ -1,5 +1,9 @@
 # Tanks2D
 
 ### Technology: 
-Threads
-``
+Threads    
+Sockets   
+JavaFX   
+Maven   
+
+![](https://github.com/buhankahleba/Tanks2D/blob/main/tanks.png)
