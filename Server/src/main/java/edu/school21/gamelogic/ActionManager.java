@@ -1,4 +1,4 @@
-package edu.school21.logic;
+package edu.school21.gamelogic;
 
 import edu.school21.constants.Action;
 import edu.school21.constants.Constants;

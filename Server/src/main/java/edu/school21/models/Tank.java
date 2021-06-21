@@ -2,8 +2,6 @@ package edu.school21.models;
 
 import edu.school21.constants.Constants;
 import edu.school21.constants.Side;
-import edu.school21.logic.ActionManager;
-import edu.school21.session.game.GameSession;
 
 import org.json.JSONObject;
 

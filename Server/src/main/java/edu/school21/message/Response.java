@@ -11,25 +11,17 @@ import java.util.LinkedList;
 public class Response {
 
     public static void  sendResponse(BufferedWriter out, Tank player, Tank enemy, LinkedList<Bullet> playerBullets,
-                                    LinkedList<Bullet> enemyBullets, boolean reverse) {
+                                     LinkedList<Bullet> enemyBullets, boolean reverse) {
         JSONObject response = new JSONObject();
         response.put("player", player.toJson(true));
         response.put("enemy", enemy.toJson(false));
         JSONObject playerBulletsJson = new JSONObject();
         for (Bullet bullet: playerBullets) {
-//            if (playerBullets.indexOf(bullet) == 0) {
-//                playerBulletsJson.put(String.valueOf(playerBullets.indexOf(bullet)), bullet.toJson(!reverse));
-//                continue;
-//            }
             playerBulletsJson.put(String.valueOf(playerBullets.indexOf(bullet)), bullet.toJson(reverse));
         }
         response.put("playerBullets", playerBulletsJson);
         JSONObject enemyBulletsJson = new JSONObject();
         for (Bullet bullet: enemyBullets) {
-//            if (enemyBullets.indexOf(bullet) == 0) {
-//                enemyBulletsJson.put(String.valueOf(enemyBullets.indexOf(bullet)), bullet.toJson(!reverse));
-//                continue;
-//            }
             enemyBulletsJson.put(String.valueOf(enemyBullets.indexOf(bullet)), bullet.toJson(reverse));
         }
         response.put("enemyBullets", enemyBulletsJson);

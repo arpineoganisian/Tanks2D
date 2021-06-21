@@ -1,7 +1,5 @@
 package edu.school21.constants;
 
-import edu.school21.logic.ActionManager;
-
 import java.awt.*;
 
 public final class Constants {

@@ -1,25 +1,20 @@
-package edu.school21.logic;
+package edu.school21.gamelogic;
 
 import java.awt.*;
 import java.io.*;
 import java.net.Socket;
 import java.util.LinkedList;
 
-import edu.school21.constants.Side;
 import edu.school21.models.Bullet;
 import edu.school21.models.Tank;
 import org.json.JSONObject;
-
-import static javafx.application.Application.launch;
 
 public class GameSession extends Thread {
     private static BufferedReader in;
     private static BufferedWriter out;
     private static Socket socket;
-    private static int delay = 0;
     private static String server;
     private static int port;
-    private static final long delayForShoot = 1000L;
     private static GameSession instance;
     private static Tank playerTank = new Tank(new Point(50, 50));
     private static Tank enemyTank = new Tank(new Point(100, 100));
@@ -38,8 +33,7 @@ public class GameSession extends Thread {
         System.out.println("Connection is established");
     }
 
-    public GameSession() {
-    }
+    public GameSession() {}
 
     public static void setServer(String server) {
         GameSession.server = server;
@@ -78,6 +72,7 @@ public class GameSession extends Thread {
 
     @Override
     public void run() {
+
         JSONObject answerJson;
         JSONObject myJson;
         JSONObject enemyJson;
@@ -85,16 +80,19 @@ public class GameSession extends Thread {
         JSONObject myBulletJson;
         JSONObject enemyBulletsJson;
         JSONObject enemyBulletJson;
-        long lastShoot = 0;
+
         initSession();
+
         String answer = "";
+
         try {
-                if (in.readLine().equals("Start\n")) {
-                    System.out.println("Here we go");
-                }
+            if (in.readLine().equals("Start\n")) {
+                System.out.println("Here we go");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         while (true) {
             try {
                 answer = in.readLine();
@@ -149,5 +147,4 @@ public class GameSession extends Thread {
             }
         }
     }
-
 }

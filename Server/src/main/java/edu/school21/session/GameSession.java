@@ -1,15 +1,13 @@
-package edu.school21.session.game;
+package edu.school21.session;
 
 import edu.school21.constants.Action;
 import edu.school21.constants.Constants;
 import edu.school21.constants.Side;
-import edu.school21.logic.ActionManager;
+import edu.school21.gamelogic.ActionManager;
 import edu.school21.message.Request;
 import edu.school21.message.Response;
 import edu.school21.models.Tank;
 import edu.school21.models.Bullet;
-import edu.school21.session.room.SessionRoom;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.awt.*;
 import java.io.*;
@@ -61,12 +59,6 @@ public class GameSession extends Thread{
         System.out.println("Initialization of game session variables");
     }
 
-    private String getWinnner() {
-        if (tank1.getHp() > 0)
-            return "Player 1";
-        return "Player 2";
-    }
-
     @Override
     public void run() {
         initGame();
@@ -92,10 +84,9 @@ public class GameSession extends Thread{
             try {
                 Thread.sleep(50);
             } catch (InterruptedException e) {
-                System.err.println("Thread can't sleep sleep");
                 e.printStackTrace();
             }
         }
-            System.out.println("Fight ends " + getWinnner());
+        System.out.println("Fight ends");
     }
 }

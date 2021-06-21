@@ -2,7 +2,7 @@ package edu.school21.models;
 
 import edu.school21.constants.Constants;
 import edu.school21.constants.Side;
-import edu.school21.logic.ActionManager;
+import edu.school21.gamelogic.ActionManager;
 import org.json.JSONObject;
 
 import java.awt.*;
@@ -18,10 +18,6 @@ public class Bullet {
         area = new Rectangle(position.x, position.y, Constants.bulletWidth, Constants.bulletHeight);
     }
 
-    public Point getPosition() {
-        return position;
-    }
-
     public Rectangle getArea() {
         return area;
     }
@@ -34,10 +30,6 @@ public class Bullet {
             position.y += Constants.bulletSpeed;
         }
         area.setRect(position.x, position.y, Constants.bulletWidth, Constants.bulletHeight);
-    }
-
-    public Side getSide() {
-        return side;
     }
 
     public JSONObject toJson(boolean reverse) {

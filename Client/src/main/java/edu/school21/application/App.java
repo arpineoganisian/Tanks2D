@@ -1,13 +1,12 @@
 package edu.school21.application;
 
 import edu.school21.constants.Constants;
-import edu.school21.logic.GameSession;
+import edu.school21.gamelogic.GameSession;
 import edu.school21.models.Bullet;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -115,32 +114,28 @@ public class App extends Application {
                             bullet.getPosition().x,
                             bullet.getPosition().y);
                 }
-                for (Bullet bullet: gameSession.getEnemyBullets()) {
-                  bullet.setImage("playerBullet.png");
-                  gc.drawImage(bullet.getImage(),
-                      bullet.getPosition().x,
-                      bullet.getPosition().y);
-                }
+
                for (Bullet bullet2: gameSession.getEnemyBullets()) {
                    bullet2.setImage("enemyBullet.png");
                    gc.drawImage(bullet2.getImage(),
                            bullet2.getPosition().x,
                            bullet2.getPosition().y);
                }
-                if (gameSession.getPlayerTank().getHp() <= 5 || gameSession.getEnemyTank().getHp() <= 5) {
-                    gc.clearRect(0, 0, Constants.arenaWidth, Constants.arenaHeight);
-                    gc.drawImage(field, 0, 0);
-                    gc.drawImage(new Image("fail.png", 650, 650, false, false), 75, 150);
-                    Label label = new Label();
-                    root.getChildren().add(label);
-                    if (gameSession.getPlayerTank().getHp() <= 5) {
-                        label.setText("     YOU LOSE");
-                    }
-                    else {
-                        label.setText("      YOU WIN");
-                    }
-                    label.setStyle("-fx-font-size: 100; -fx-text-fill: #6c0909");
-                    stop();
+               //end of the game
+               if (gameSession.getPlayerTank().getHp() <= 5 || gameSession.getEnemyTank().getHp() <= 5) {
+                   gc.clearRect(0, 0, Constants.arenaWidth, Constants.arenaHeight);
+                   gc.drawImage(field, 0, 0);
+                   gc.drawImage(new Image("fail.png", 650, 650, false, false), 75, 150);
+                   Label label = new Label();
+                   root.getChildren().add(label);
+                   if (gameSession.getPlayerTank().getHp() <= 5) {
+                       label.setText("     YOU LOSE");
+                   }
+                   else {
+                       label.setText("      YOU WIN");
+                   }
+                   label.setStyle("-fx-font-size: 100; -fx-text-fill: #6c0909");
+                   stop();
                 }
             }
         }.start();
@@ -149,6 +144,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+
         if (args.length != 1) {
             System.out.println(args.length);
             throw new IllegalArgumentException("Invalid number of arguments");
@@ -161,14 +157,17 @@ public class App extends Application {
         //getting instance of Class, that's responsible for communication with server
         GameSession gameSession = GameSession.getInstance();
         gameSession.setPort(port);
-        gameSession.setServer("10.21.22.116");
+        gameSession.setServer("localhost");
         gameSession.start();
 
+        //launching rendering
         launch();
 
+        //launching communication with server
         try {
             gameSession.join();
         } catch (InterruptedException e) {
+            System.err.println("Impossible to join Game Session thread");
             e.printStackTrace();
         }
     }

@@ -1,7 +1,5 @@
 package edu.school21.models;
 
-import edu.school21.constants.Side;
-
 import java.awt.*;
 import javafx.scene.image.Image;
 
