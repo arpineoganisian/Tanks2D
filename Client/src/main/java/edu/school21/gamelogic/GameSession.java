@@ -85,14 +85,6 @@ public class GameSession extends Thread {
 
         String answer = "";
 
-        try {
-            if (in.readLine().equals("Start\n")) {
-                System.out.println("Here we go");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         while (true) {
             try {
                 answer = in.readLine();

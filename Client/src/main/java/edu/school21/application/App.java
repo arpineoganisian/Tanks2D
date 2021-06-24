@@ -100,7 +100,7 @@ public class App extends Application {
                 gc.drawImage(playerLifeBarBorder, 9, 768);
                 gc.drawImage(enemyLifeBar, 590, 10);
                 gc.drawImage(enemyLifeBarBorder, 589, 8);
-                System.out.println(GameSession.getPlayerTank().getHp() + "-----HP----- " + GameSession.getEnemyTank().getHp());
+//                System.out.println(GameSession.getPlayerTank().getHp() + " -----HP----- " + GameSession.getEnemyTank().getHp());
                 gc.drawImage(gameSession.getPlayerTank().getImage(),
                         gameSession.getPlayerTank().getPosition().x,
                         gameSession.getPlayerTank().getPosition().y);
