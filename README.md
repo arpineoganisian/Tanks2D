@@ -3,9 +3,10 @@
 
 ### Technology: 
 - Threads    
-- Sockets   
-- JavaFX   
-- Maven
+- Sockets    
+- Spring   
+- JavaFX    
+- Maven   
 
 ![](https://github.com/buhankahleba/Tanks2D/blob/main/tanks2d.png)
 

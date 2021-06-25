@@ -1,17 +1,21 @@
-package edu.school21.constants;
+package edu.school21.models;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
-public class Constants {
+@Component
+@Scope("singleton")
+public class ArenaConfig {
     @Value("${game.arenaHeight:1}")
     private int arenaHeight;
     @Value("${game.arenaWidth:1}")
     private int arenaWidth;
-    @Value("${game.lifeBar:1}")
+    @Value("${game.lifeBarSize}")
     private int lifeBarSize;
-    @Value("${game.bulletStartPositionUp:1}")
+    @Value("${game.bulletStartPositionUp}")
     private int bulletStartPositionUp;
-    @Value("${game.bulletStartPositionDown:1}")
+    @Value("${game.bulletStartPositionDown}")
     private int bulletStartPositionDown;
     @Value("${game.tankStartPositionX:1}")
     private int tankStartPositionX;
@@ -19,6 +23,16 @@ public class Constants {
     private int tankStartPositionUp;
     @Value("${game.tankStartPositionDown:1}")
     private int tankStartPositionDown;
+    @Value("${game.bulletSpeed}")
+    private int bulletSpeed;
+    @Value("${game.bulletWidth}")
+    private int bulletWidth;
+    @Value("${game.bulletHeight}")
+    private int bulletHeight;
+    @Value("${game.bulletDamage}")
+    private int bulletDamage;
+
+    public ArenaConfig() {}
 
     public int getArenaHeight() {
         return arenaHeight;
@@ -51,4 +65,21 @@ public class Constants {
     public int getTankStartPositionDown() {
         return tankStartPositionDown;
     }
+
+    public int getBulletSpeed() {
+        return bulletSpeed;
+    }
+
+    public int getBulletWidth() {
+        return bulletWidth;
+    }
+
+    public int getBulletHeight() {
+        return bulletHeight;
+    }
+
+    public int getBulletDamage() {
+        return bulletDamage;
+    }
+
 }

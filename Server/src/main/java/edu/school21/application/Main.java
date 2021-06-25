@@ -1,20 +1,34 @@
 package edu.school21.application;
 
+import edu.school21.models.Context;
 import edu.school21.server.Server;
 
+import org.springframework.context.ApplicationContext;
 import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    private static int getPort(String line) {
+        String command = line.strip().split("=")[0];
+        if (!command.equals("--port")) {
+            throw new RuntimeException("Illegal command");
+        }
+        int port = Integer.parseInt(line.strip().split("=")[1]);
+        if (port < 0 || port > 65535) {
+            throw new RuntimeException("Illegal port");
+        }
+        return port;
+    }
+
+    public static void main(String[] args) throws IOException, InterruptedException {
+
         if (args.length != 1) {
-            throw new IllegalArgumentException("Invalid number of arguments");
+            throw new RuntimeException("Invalid sever Configuration");
         }
-        int port = Integer.parseInt(args[0].substring(args[0].indexOf('=') + 1));
-        if (!args[0].equals("--port=" + port)) {
-            throw new IllegalArgumentException("Invalid argument");
-        }
-        Server server = new Server(port);
+
+        ApplicationContext context = Context.getContext();
+        Server server = context.getBean("server", Server.class);
+        server.setPort(getPort(args[0]));
         server.start();
     }
 }

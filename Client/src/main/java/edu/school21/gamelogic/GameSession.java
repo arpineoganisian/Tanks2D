@@ -28,7 +28,7 @@ public class GameSession extends Thread {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         } catch (IOException e) {
-            System.err.println("No connection to server");;
+            System.err.println("No connection to the server");;
         }
         System.out.println("Connection is established");
     }
@@ -118,16 +118,20 @@ public class GameSession extends Thread {
                 enemyTank.setImage("enemy.png");
 
                 myBullets.clear();
-                myBulletsJson = new JSONObject(answerJson.get("playerBullets").toString());
-                for (int i = 0; i < myBulletsJson.length(); i++) {
-                    myBulletJson = new JSONObject(myBulletsJson.get(Integer.toString(i)).toString());
-                    myBullets.add(new Bullet(new Point(myBulletJson.getInt("x"), myBulletJson.getInt("y"))));
+                if (!answerJson.isNull("playerBullets")) {
+                    myBulletsJson = new JSONObject(answerJson.get("playerBullets").toString());
+                    for (int i = 0; i < myBulletsJson.length(); i++) {
+                        myBulletJson = new JSONObject(myBulletsJson.get(Integer.toString(i)).toString());
+                        myBullets.add(new Bullet(new Point(myBulletJson.getInt("x"), myBulletJson.getInt("y"))));
+                    }
                 }
                 enemyBullets.clear();
-                enemyBulletsJson = new JSONObject(answerJson.get("enemyBullets").toString());
-                for (int i = 0; i < enemyBulletsJson.length(); i++) {
-                    enemyBulletJson = new JSONObject(enemyBulletsJson.get(Integer.toString(i)).toString());
-                    enemyBullets.add(new Bullet(new Point(enemyBulletJson.getInt("x"), enemyBulletJson.getInt("y"))));
+                if (!answerJson.isNull("enemyBullets")) {
+                    enemyBulletsJson = new JSONObject(answerJson.get("enemyBullets").toString());
+                    for (int i = 0; i < enemyBulletsJson.length(); i++) {
+                        enemyBulletJson = new JSONObject(enemyBulletsJson.get(Integer.toString(i)).toString());
+                        enemyBullets.add(new Bullet(new Point(enemyBulletJson.getInt("x"), enemyBulletJson.getInt("y"))));
+                    }
                 }
             }
             else {
