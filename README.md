@@ -1,7 +1,7 @@
 # Tanks2D
 #### _Multiplayer 2D game written on Java_
 
-### Technology: 
+### Technologies: 
 - Threads    
 - Sockets    
 - Spring   
